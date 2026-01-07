@@ -17,6 +17,12 @@
 
 - Language: Go
 
+**frontend**
+
+- Language: TypeScript
+- Package Manager: pnpm
+- Frameworks: Svelte, SvelteKit
+
 ## Добавление нового модуля
 
 - Добавьте ваш модуль в раздел "Структура проекта" файла CONTRIBUTING.md с указанием используемого стека.
@@ -34,6 +40,16 @@
 ## Кодстайл
 
 - **Go:** принят стандартный стиль [Google](https://github.com/golang/go/wiki/CodeReviewComments)
+- **TypeScript:** см. ниже
+
+### TypeScript
+
+[Eslint](https://eslint.org) обнаружит большинство проблем со стилем, которые могут быть в вашем коде. Вы можете проверить состояние стиля кода, просто запустив команду `pnpm lint`.
+
+#### Соглашения по написанию кода
+
+- `snake_case` — для внутренних имен переменных и методов.
+- `camelCase` — для публичных имен переменных и методов.
 
 ## Лицензия
 
