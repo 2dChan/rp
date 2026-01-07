@@ -39,8 +39,9 @@
 
 ## Кодстайл
 
-- **Go:** принят стандартный стиль [Google](https://github.com/golang/go/wiki/CodeReviewComments)
-- **TypeScript:** см. ниже
+### Go
+
+Принят стандартный стиль [Google](https://github.com/golang/go/wiki/CodeReviewComments)
 
 ### TypeScript
 
