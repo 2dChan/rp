@@ -41,7 +41,7 @@
 
 ### Go
 
-Принят стандартный стиль [Google](https://github.com/golang/go/wiki/CodeReviewComments)
+Принят стандартный стиль [Google](https://github.com/golang/go/wiki/CodeReviewComments).
 
 ### TypeScript
 
