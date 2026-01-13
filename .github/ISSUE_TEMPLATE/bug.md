@@ -2,8 +2,6 @@
 name: Bug report
 about: Create a report to help us improve
 title: "[FIX] "
-labels: bug
-assignees: ""
 ---
 
 **Описание**
@@ -18,5 +16,4 @@ assignees: ""
 **Чек-лист**
 
 - [ ] Описание заполнено
-- [ ] Добавлены нужные labels
-- [ ] Добавлен label соответствующий части проекта в монорепозитории(например: backend)
+- [ ] Добавлен label, соответствующий части проекта в монорепозитории
