@@ -2,8 +2,6 @@
 name: Feature request
 about: Suggest an idea for this project
 title: "[FEATURE]"
-labels: enhancement
-assignees: ""
 ---
 
 **Предлагаемая фича или улучшение**
@@ -18,5 +16,4 @@ assignees: ""
 **Чек-лист**
 
 - [ ] Описание заполнено
-- [ ] Выбраны правильные labels
-- [ ] Добавлен label соответствующий части проекта в монорепозитории(например: backend)
+- [ ] Добавлен label соответствующий части проекта в монорепозитории
