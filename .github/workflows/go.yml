@@ -68,7 +68,7 @@ jobs:
           go tool cover -func=coverage.out
 
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v4
+        uses: codecov/codecov-action@v5
         if: matrix.module == 'backend'
         with:
           file: ${{ matrix.module }}/coverage.out
