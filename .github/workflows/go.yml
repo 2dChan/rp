@@ -71,7 +71,7 @@ jobs:
         uses: codecov/codecov-action@v5
         if: matrix.module == 'backend'
         with:
-          file: ${{ matrix.module }}/coverage.out
+          files: ${{ matrix.module }}/coverage.out
           flags: ${{ matrix.module }}
           fail_ci_if_error:  false
 
