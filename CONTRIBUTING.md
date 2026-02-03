@@ -57,7 +57,15 @@
 
 ### Go
 
-Принят стандартный стиль [Google](https://github.com/golang/go/wiki/CodeReviewComments).
+Принят стандартный стиль [Google](https://google.github.io/styleguide/go/).
+
+> Для тестирования разрешена библиотека [testify](https://github.com/stretchr/testify).
+
+Дополнительные ресурсы:
+
+- [Effective Go](https://go.dev/doc/effective_go)
+- [Code Review Comments](https://go.dev/wiki/CodeReviewComments)
+- [Test Comments](https://go.dev/wiki/TestComments)
 
 ### TypeScript
 
