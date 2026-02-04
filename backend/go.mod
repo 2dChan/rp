@@ -4,6 +4,7 @@ go 1.25.1
 
 require (
 	github.com/2dChan/s2voronoi v1.0.0
+	github.com/ajstarks/svgo v0.0.0-20211024235047-1546f124cd8b
 	github.com/gin-gonic/gin v1.11.0
 	github.com/golang/geo v0.0.0-20260120070133-792bb8583fbb
 	github.com/ojrac/opensimplex-go v1.0.2
