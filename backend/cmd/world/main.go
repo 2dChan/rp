@@ -69,7 +69,7 @@ func renderWorld(world *world.World) {
 }
 
 func main() {
-	world, err := world.NewWorld(5000)
+	world, err := world.NewWorld(5000, 1000)
 	if err != nil {
 		log.Fatal(err)
 	}

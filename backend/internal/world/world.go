@@ -44,7 +44,6 @@ type World struct {
 
 type Options struct {
 	Scale float64
-	Seed  int64
 	// NOTE: Every step performance heavy.
 	LloydRelaxationSteps int
 }
@@ -57,33 +56,26 @@ func WithScale(scale float64) Option {
 	}
 }
 
-func WithSeed(seed int64) Option {
-	return func(o *Options) {
-		o.Seed = seed
-	}
-}
-
 func WithLloydRelaxationSteps(steps int) Option {
 	return func(o *Options) {
 		o.LloydRelaxationSteps = steps
 	}
 }
 
-func NewWorld(numRegions int, setters ...Option) (*World, error) {
+func NewWorld(numRegions int, seed int64, setters ...Option) (*World, error) {
 	if numRegions < 4 {
 		return nil, fmt.Errorf("NewWorld: insufficient regions for world, minimum 4 required")
 	}
 
 	opts := &Options{
 		Scale:                2,
-		Seed:                 0,
 		LloydRelaxationSteps: 5,
 	}
 	for _, set := range setters {
 		set(opts)
 	}
 
-	sites := utils.GenerateRandomPoints(numRegions, opts.Seed)
+	sites := utils.GenerateRandomPoints(numRegions, seed)
 	vd, err := s2voronoi.NewDiagram(sites)
 	if err != nil {
 		return nil, err
@@ -94,7 +86,7 @@ func NewWorld(numRegions int, setters ...Option) (*World, error) {
 	}
 
 	heights := make([]uint8, numRegions)
-	noise := opensimplex.NewNormalized(opts.Seed)
+	noise := opensimplex.NewNormalized(seed)
 	for i := range vd.NumCells() {
 		c := vd.Cell(i)
 		x, y, z := c.Site().X*opts.Scale, c.Site().Y*opts.Scale, c.Site().Z*opts.Scale
