@@ -8,6 +8,7 @@ import (
 	"math"
 
 	"github.com/golang/geo/r2"
+	"github.com/golang/geo/s1"
 	"github.com/golang/geo/s2"
 )
 
@@ -16,9 +17,6 @@ import (
 // ========================================================================
 
 func PointToScreenFloat(p s2.Point) r2.Point {
-	xScale := float64(width)
-	proj := s2.NewPlateCarreeProjection(xScale)
-
 	r2p := proj.Project(p)
 
 	x := (r2p.X + xScale) / (2 * xScale)
@@ -76,7 +74,8 @@ func SplitPolygonAtAntimeridian(region interface {
 
 		if crossesAntimeridian(v1.lng, v2.lng) {
 			crossLat := interpolateLatAtAntimeridian(v1.lat, v1.lng, v2.lat, v2.lng)
-			crossY := (0.5 - crossLat/math.Pi) * float64(height)
+			crossPoint := s2.PointFromLatLng(s2.LatLng{Lat: s1.Angle(crossLat), Lng: s1.Angle(math.Pi)})
+			crossY := PointToScreenFloat(crossPoint).Y
 
 			if v1.lng > 0 {
 				polygons[0] = append(polygons[0], v1.screen)

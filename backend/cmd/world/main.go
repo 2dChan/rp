@@ -10,17 +10,22 @@ import (
 
 	"github.com/2dChan/rp/backend/internal/world"
 	svg "github.com/ajstarks/svgo"
+	"github.com/golang/geo/s2"
 )
 
 const (
 	filename = "world.svg"
 
-	// PlateCarreeProjection
 	width  = 1500
 	height = width / 2
 
 	regionStyle = "fill:rgb(230,230,230);stroke:rgb(170,170,170);stroke-width:1;stroke-opacity:1.0"
 	waterStyle  = "fill:rgb(170,210,230)"
+)
+
+var (
+	xScale = float64(width)
+	proj   = s2.NewMercatorProjection(xScale)
 )
 
 func renderWorld(world *world.World) {
@@ -64,7 +69,7 @@ func renderWorld(world *world.World) {
 }
 
 func main() {
-	world, err := world.NewWorld(10000, world.WithScale(2.5))
+	world, err := world.NewWorld(5000)
 	if err != nil {
 		log.Fatal(err)
 	}
