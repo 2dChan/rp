@@ -45,6 +45,8 @@ type World struct {
 type Options struct {
 	Scale float64
 	Seed  int64
+	// NOTE: Every step performance heavy.
+	LloydRelaxationSteps int
 }
 
 type Option func(*Options)
@@ -61,14 +63,21 @@ func WithSeed(seed int64) Option {
 	}
 }
 
+func WithLloydRelaxationSteps(steps int) Option {
+	return func(o *Options) {
+		o.LloydRelaxationSteps = steps
+	}
+}
+
 func NewWorld(numRegions int, setters ...Option) (*World, error) {
 	if numRegions < 4 {
 		return nil, fmt.Errorf("NewWorld: insufficient regions for world, minimum 4 required")
 	}
 
 	opts := &Options{
-		Scale: 2,
-		Seed:  0,
+		Scale:                2,
+		Seed:                 0,
+		LloydRelaxationSteps: 5,
 	}
 	for _, set := range setters {
 		set(opts)
@@ -80,7 +89,7 @@ func NewWorld(numRegions int, setters ...Option) (*World, error) {
 		return nil, err
 	}
 	// TODO: Add to Options.
-	if err := vd.Relax(3); err != nil {
+	if err := vd.Relax(opts.LloydRelaxationSteps); err != nil {
 		return nil, err
 	}
 
